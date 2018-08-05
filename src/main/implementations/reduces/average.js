@@ -2,7 +2,7 @@ var ReduceFunction = require("../../functions/reduce");
 
 class Average extends ReduceFunction{
   constructor(){
-    super("sum", () => {
+    super("average", () => {
 
       var reduction = (acc, doc, idx) => {
         if(idx === 0){
