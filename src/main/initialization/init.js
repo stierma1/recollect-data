@@ -30,6 +30,8 @@ module.exports = new Promise(async (res, rej) => {
   var router = new Router();
   var v = await router.invoke(`/source/ObservableSource/map/identity/composite/identity;flatten=true/reduce/count/render/json;first=false/destination/ObjectDestination`, Observable.from([1,23,4]));
   console.log(v)
+  var s = await router.invoke(`/source/ObservableSource/map/identity/composite/identity;flatten=true/render/text;first=false;flatten=true/destination/ObjectDestination`, Observable.from([5,1,23,4]));
+  console.log(s)
   res();
 }).catch((err) => {
   console.log(err);

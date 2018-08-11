@@ -15,10 +15,11 @@ class ObjectDestination{
       });
 
       renderPipe.on("end", () => {
-        if(headers["Content-Type"] === "application/json" || headers["content-type"] === "application/json"){
+        var contentType = headers["Content-Type"] || headers["content-type"] || "";
+        if(contentType === "application/json"){
           return res(JSON.parse(bufferStr));
         }
-        if(headers["Content-Type"].indexOf("text") > -1 || headers["content-type"].indexOf("text") > -1){
+        if(contentType.indexOf("text/") > -1){
           return res(bufferStr);
         }
         res(buffer);
